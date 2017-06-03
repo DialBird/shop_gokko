@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
+gem 'font-awesome-rails'
 gem 'kaminari'
 
 group :development, :test do
