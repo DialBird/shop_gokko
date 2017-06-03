@@ -1,0 +1,25 @@
+ja:
+  errors: &errors
+    format: '%{message}'
+    title: 入力内容にエラーがあります
+    messages:
+      blank: '%{attribute}を入力してください。'
+      record_invalid: "バリデーションに失敗しました: %{errors}"
+      restrict_dependent_destroy:
+        has_one: "%{record}が存在しているので削除できません"
+        has_many: "%{record}が存在しているので削除できません"
+  helpers:
+    create: "%{name}を作成しました"
+    update: "%{name}を更新しました"
+    destroy: "%{name}を削除しました"
+  navs:
+    index: "%{name}一覧"
+    new: "新規%{name}作成"
+    edit: "%{name}編集"
+  activerecord:
+    <<: *errors
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        name: 名前
