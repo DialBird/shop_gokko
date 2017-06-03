@@ -1,0 +1,23 @@
+
+AllCops:
+  TargetRubyVersion: 2.2
+  Exclude:
+    - bin/*
+    - db/schema.rb
+    - config/**/*
+    - lib/task/*.rake
+    - vender/gems/**/*
+Rails:
+  Enabled: true
+
+# "Missing top-level class documentation comment."を無効
+Style/Documentation:
+  Enabled: false
+
+# "Line is too long"を無効
+Metrics/LineLength:
+  Enabled: false
+
+# Prefer ' strings when you don't need string interpolation or special symbols.
+StringLiterals:
+  Enabled: false
