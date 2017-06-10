@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :products
 
   get '/cart' => 'carts#edit'
+  put '/populate_cart' => 'carts#populate'
 end
