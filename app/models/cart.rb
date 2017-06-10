@@ -15,6 +15,10 @@ class Cart < ApplicationRecord
 
   validates :status_id, inclusion: { in: [1, 2] }
 
+  scope :using, -> {
+    where(status_id: 1)
+  }
+
   def empty?
     cart_items.size == 0
   end
