@@ -11,7 +11,7 @@
 
 class Cart < ApplicationRecord
   belongs_to :user
-  has_many :cart_items
+  has_many :cart_items, dependent: :destroy
 
   validates :status_id, inclusion: { in: [1, 2] }
 

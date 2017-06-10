@@ -23,7 +23,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :carts
+  has_many :carts, dependent: :destroy
 
   def using_cart
     carts.find_by(status_id: 1)
