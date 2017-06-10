@@ -1,5 +1,5 @@
 # user
-User.create(email: 'rememberthatk@icloud.com', password: 'password')
+User.create(email: 'tekitou@co.jp', password: 'password')
 
 # product
 Product.create(name: 'りんご', price: 200, cost: 100, image: File.open("#{Rails.root}/db/data/apple.jpg"))
