@@ -14,4 +14,8 @@ class Cart < ApplicationRecord
   has_many :cart_items
 
   validates :status_id, inclusion: { in: [1, 2] }
+
+  def empty?
+    cart_items.size == 0
+  end
 end

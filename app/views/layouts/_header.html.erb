@@ -14,6 +14,9 @@
         <% if user_signed_in? %>
           <li><%= link_to '買い物する', products_path %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+          <li>
+            <%= link_to current_cart_status, cart_path %>
+          </li>
         <% end %>
       </ul>
     </div>

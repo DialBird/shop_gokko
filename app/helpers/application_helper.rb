@@ -22,6 +22,14 @@ module ApplicationHelper
     end
   end
 
+  def current_cart_status
+    if current_cart.present? and !current_cart.empty?
+      "Cart: (#{current_cart.cart_items.count})"
+    else
+      "Cart: (Empty)"
+    end
+  end
+
   private
 
   def display_ul(messages)
