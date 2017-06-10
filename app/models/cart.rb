@@ -11,4 +11,6 @@
 
 class Cart < ApplicationRecord
   belongs_to :user
+
+  validates :status_id, inclusion: { in: [1, 2] }
 end
