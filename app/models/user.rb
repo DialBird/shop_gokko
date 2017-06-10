@@ -24,4 +24,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :carts
+
+  def using_cart
+    carts.find_by(status_id: 1)
+  end
 end
