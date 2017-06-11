@@ -23,26 +23,9 @@ RSpec.describe Cart, type: :model do
         expect(cart).to be_valid
       end
     end
-
-    describe 'status_id' do
-      it '1..3しか入らないこと' do
-        cart.status_id = 3
-        expect(cart).to be_valid
-        cart.status_id = 4
-        expect(cart).not_to be_valid
-      end
-    end
   end
 
   describe 'scope' do
-    describe '#using' do
-      let!(:using_cart) { FactoryGirl.create(:cart, status_id: 1) }
-      let!(:not_using_cart) { FactoryGirl.create(:cart, status_id: 2) }
-
-      it '使用中のものだけ返すこと' do
-        expect(Cart.using).to match_array [using_cart]
-      end
-    end
   end
 
   describe '#any_items?' do

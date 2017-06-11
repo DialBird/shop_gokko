@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     @current_cart = current_user.using_cart
     options[:create_cart_if_necessary] ||= false
     if @current_cart.blank? and options[:create_cart_if_necessary]
-      @current_cart = Cart.create(user_id: current_user.id, status_id: 1)
+      @current_cart = Cart.create(user_id: current_user.id, state: "address")
     end
     @current_cart
   end

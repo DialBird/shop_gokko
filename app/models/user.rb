@@ -26,6 +26,6 @@ class User < ApplicationRecord
   has_many :carts, dependent: :destroy
 
   def using_cart
-    carts.find_by(status_id: 1)
+    carts.find_by(state: "address")
   end
 end
