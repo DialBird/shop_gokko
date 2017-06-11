@@ -13,9 +13,9 @@
 
 FactoryGirl.define do
   factory :product do
-    name "MyString"
-    price 1
-    cost 1
+    sequence(:name) { |n| "商品_#{n}"}
+    price 100
+    cost 50
     image "MyString"
   end
 end

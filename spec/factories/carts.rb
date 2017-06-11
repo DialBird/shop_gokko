@@ -11,7 +11,7 @@
 
 FactoryGirl.define do
   factory :cart do
-    user nil
+    association :user
     status_id 1
   end
 end
