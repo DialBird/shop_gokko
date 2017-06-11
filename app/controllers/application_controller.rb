@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_cart
 
   def current_cart(options = {})
-    return unless user_signed_in?
     # 必要か？
     return @current_cart if @current_cart
 
