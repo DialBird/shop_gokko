@@ -1,28 +1,26 @@
 <% content_for(:title) do%>カート<% end %>
 
 <% if @cart.any_items? %>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>商品</th>
-        <th>価格</th>
-        <th>数量</th>
-        <th>合計</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @cart.cart_items.each do |cart_item| %>
-      <tr>
-        <td><%= cart_item.product.name %></td>
-        <td><%= cart_item.product.price %></td>
-        <td><%= cart_item.quantity %></td>
-        <td><%= cart_item.display_total %></td>
-        <td><%= link_to '削除', '#', class: 'btn btn-danger' %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+  <%= form_for @cart, url: update_cart_path, method: :put, html: { class: 'form-horizontal' } do |cart_f| %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>商品</th>
+          <th>価格</th>
+          <th>数量</th>
+          <th>合計</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'carts/cart_item', collection: @cart.cart_items, locals: { cart_f: cart_f } %>
+      </tbody>
+    </table>
+
+    <div class="col-sm-12">
+      <%= cart_f.submit '更新', class: 'btn btn-success' %>
+    </div>
+  <% end %>
 <% else %>
   <p>Now the cart is empty</p>
 <% end %>

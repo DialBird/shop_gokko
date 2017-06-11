@@ -24,4 +24,21 @@ class CartsController < ApplicationController
       redirect_to cart_path
     end
   end
+
+  def update
+    redirect_to root_path unless @cart = current_cart
+
+    unless @cart.contents.update_cart(cart_params)
+      flash.now[:danger] = '更新に失敗しました'
+    end
+
+    redirect_to cart_path
+  end
+
+  private
+
+  def cart_params
+    return unless params[:cart]
+    params.require(:cart).permit(cart_items_attributes: CartItem::PERMITTED_ATTRIBUTES)
+  end
 end

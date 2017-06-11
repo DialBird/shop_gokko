@@ -9,6 +9,10 @@ class CartContents
     cart_item = add_to_cart_item(product_id, quantity)
   end
 
+  def update_cart(params)
+    cart.update(params)
+  end
+
   private
 
   def add_to_cart_item(product_id, quantity)

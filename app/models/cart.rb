@@ -13,6 +13,8 @@ class Cart < ApplicationRecord
   belongs_to :user
   has_many :cart_items, dependent: :destroy
 
+  accepts_nested_attributes_for :cart_items, allow_destroy: true, reject_if: :all_blank
+
   validates :status_id, inclusion: { in: [1, 2] }
 
   # 近いうちにhas_oneに変更する

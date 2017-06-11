@@ -11,6 +11,8 @@
 #
 
 class CartItem < ApplicationRecord
+  PERMITTED_ATTRIBUTES = %i(id quantity).freeze
+
   belongs_to :product
   belongs_to :cart
 
