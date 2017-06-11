@@ -11,7 +11,12 @@
 
 FactoryGirl.define do
   factory :cart do
-    association :user
     status_id 1
+
+    after :build do |cart|
+      if cart.user.blank?
+        cart.user = User.find_by(id: 1) || FactoryGirl.create(:user)
+      end
+    end
   end
 end
