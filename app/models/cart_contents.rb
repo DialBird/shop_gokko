@@ -11,6 +11,7 @@ class CartContents
 
   def update_cart(params)
     cart.update(params)
+    cart.cart_items = cart.cart_items.select { |item| 0 < item.quantity }
   end
 
   private

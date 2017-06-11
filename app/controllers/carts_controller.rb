@@ -27,11 +27,7 @@ class CartsController < ApplicationController
 
   def update
     redirect_to root_path unless @cart = current_cart
-
-    unless @cart.contents.update_cart(cart_params)
-      flash.now[:danger] = '更新に失敗しました'
-    end
-
+    @cart.contents.update_cart(cart_params)
     redirect_to cart_path
   end
 
