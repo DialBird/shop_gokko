@@ -2,7 +2,10 @@ class CreateCarts < ActiveRecord::Migration[5.1]
   def change
     create_table :carts, comment: 'カート' do |t|
       t.references :user, foreign_key: true
-      t.integer :status_id, default: 1, null: false, comment: 'ステータスID'
+      t.string :state, comment: 'ステータスID'
+      t.string :postal_code, default: "", comment: '郵便番号'
+      t.string :address, default: "", comment: '住所'
+      t.datetime :completed_at, comment: '取引完了日'
 
       t.timestamps
     end
