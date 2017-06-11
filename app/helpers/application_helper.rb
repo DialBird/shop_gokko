@@ -23,7 +23,7 @@ module ApplicationHelper
   end
 
   def current_cart_status
-    if current_cart.present? and !current_cart.empty?
+    if current_cart.present? and current_cart.any_items?
       "Cart: (#{current_cart.cart_items.count})"
     else
       "Cart: (Empty)"

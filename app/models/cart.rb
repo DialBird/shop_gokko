@@ -19,8 +19,8 @@ class Cart < ApplicationRecord
     where(status_id: 1)
   }
 
-  def empty?
-    cart_items.size == 0
+  def any_items?
+    0 < cart_items.size
   end
 
   def contents

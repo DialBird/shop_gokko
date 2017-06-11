@@ -1,8 +1,6 @@
 <% content_for(:title) do%>カート<% end %>
 
-<% if @cart.empty? %>
-  <p>Now the cart is empty</p>
-<% else %>
+<% if @cart.any_items? %>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -25,4 +23,6 @@
     <% end %>
     </tbody>
   </table>
+<% else %>
+  <p>Now the cart is empty</p>
 <% end %>
