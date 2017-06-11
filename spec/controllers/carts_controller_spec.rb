@@ -35,13 +35,13 @@ RSpec.describe CartsController, type: :controller do
     end
   end
 
-  describe 'GET #populate' do
+  describe 'PUT #populate' do
     before do
       FactoryGirl.create(:product)
     end
 
     it 'カート詳細画面にリダイレクトすること' do
-      get :populate, params: { quantity: 1, product_id: 1 }
+      put :populate, params: { quantity: 1, product_id: 1 }
       expect(response.status).to eq 302
       expect(response).to redirect_to cart_path
     end
@@ -49,7 +49,7 @@ RSpec.describe CartsController, type: :controller do
     context '使用中のカートが存在していない場合' do
       it '新しいカートを作成して、インスタンスに格納すること' do
         expect do
-          get :populate, params: { quantity: 1, product_id: 1 }
+          put :populate, params: { quantity: 1, product_id: 1 }
         end.to change(Cart, :count).by(1)
         expect(assigns[:cart]).to be_present
       end
@@ -65,7 +65,7 @@ RSpec.describe CartsController, type: :controller do
 
       it '使用中のカートをインスタンス変数に格納すること' do
         expect do
-          get :populate, params: { quantity: 1, product_id: 1 }
+          put :populate, params: { quantity: 1, product_id: 1 }
         end.not_to change(Cart, :count)
         expect(assigns[:cart]).to eq current_user.using_cart
       end
