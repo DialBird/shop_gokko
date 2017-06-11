@@ -18,7 +18,8 @@
     </table>
 
     <div class="col-sm-12">
-      <%= cart_f.submit '更新', class: 'btn btn-success' %>
+      <%= button_tag '個数変更', class: 'btn btn-success' %>
+      <%= button_tag 'レジへ進む', name: 'checkout', class: 'btn btn-primary' %>
     </div>
   <% end %>
 <% else %>

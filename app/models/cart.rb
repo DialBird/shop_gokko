@@ -15,7 +15,7 @@ class Cart < ApplicationRecord
 
   accepts_nested_attributes_for :cart_items, allow_destroy: true, reject_if: :all_blank
 
-  validates :status_id, inclusion: { in: [1, 2] }
+  validates :status_id, inclusion: { in: [1, 2, 3] }
 
   # 近いうちにhas_oneに変更する
   scope :using, -> {
@@ -28,5 +28,16 @@ class Cart < ApplicationRecord
 
   def contents
     @contents ||= CartContents.new(self)
+  end
+
+  def state
+    case status_id
+    when 1
+      "address"
+    when 2
+      "confirm"
+    when 3
+      "complete"
+    end
   end
 end

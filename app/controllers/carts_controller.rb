@@ -28,7 +28,11 @@ class CartsController < ApplicationController
   def update
     redirect_to root_path unless @cart = current_cart
     @cart.contents.update_cart(cart_params)
-    redirect_to cart_path
+    if params.key?(:checkout)
+      redirect_to checkout_path
+    else
+      redirect_to cart_path
+    end
   end
 
   private
