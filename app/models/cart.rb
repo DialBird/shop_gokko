@@ -15,6 +15,7 @@ class Cart < ApplicationRecord
 
   validates :status_id, inclusion: { in: [1, 2] }
 
+  # 近いうちにhas_oneに変更する
   scope :using, -> {
     where(status_id: 1)
   }

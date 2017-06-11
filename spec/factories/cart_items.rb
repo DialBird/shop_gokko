@@ -12,8 +12,8 @@
 
 FactoryGirl.define do
   factory :cart_item do
-    product nil
-    cart nil
+    association :product
+    association :cart
     quantity 1
   end
 end
