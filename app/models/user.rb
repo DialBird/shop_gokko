@@ -24,8 +24,4 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :carts, dependent: :destroy
-
-  def using_cart
-    carts.find_by(state: "address")
-  end
 end
