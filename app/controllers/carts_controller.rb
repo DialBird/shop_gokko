@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   def edit
-    @cart = current_cart || Cart.find_or_initialize_by(user_id: current_user.id, state: "address")
+    @cart = current_cart || Cart.incomplete.find_or_initialize_by(user_id: current_user.id)
   end
 
   def populate

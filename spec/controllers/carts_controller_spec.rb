@@ -29,7 +29,7 @@ RSpec.describe CartsController, type: :controller do
 
         it '使用中のカートインスタンスを返すこと' do
           get :edit
-          expect(assigns[:cart]).to eq current_user.using_cart
+          expect(assigns[:cart]).to eq Cart.incomplete.find_by(user_id: current_user.id)
         end
       end
     end
@@ -67,7 +67,7 @@ RSpec.describe CartsController, type: :controller do
         expect do
           put :populate, params: { quantity: 1, product_id: 1 }
         end.not_to change(Cart, :count)
-        expect(assigns[:cart]).to eq current_user.using_cart
+        expect(assigns[:cart]).to eq Cart.incomplete.find_by(user_id: current_user.id)
       end
     end
   end

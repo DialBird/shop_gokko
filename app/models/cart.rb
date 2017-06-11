@@ -18,6 +18,10 @@ class Cart < ApplicationRecord
 
   accepts_nested_attributes_for :cart_items, allow_destroy: true, reject_if: :all_blank
 
+  scope :incomplete, -> {
+    where(completed_at: nil)
+  }
+
   def any_items?
     0 < cart_items.size
   end
