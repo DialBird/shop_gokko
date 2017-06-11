@@ -22,10 +22,10 @@ RSpec.describe Cart, type: :model do
     end
 
     describe 'status_id' do
-      it '1か2しか入らないこと' do
-        cart.status_id = 2
-        expect(cart).to be_valid
+      it '1..3しか入らないこと' do
         cart.status_id = 3
+        expect(cart).to be_valid
+        cart.status_id = 4
         expect(cart).not_to be_valid
       end
     end
