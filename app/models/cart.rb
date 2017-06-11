@@ -18,6 +18,13 @@ class Cart < ApplicationRecord
 
   accepts_nested_attributes_for :cart_items, allow_destroy: true, reject_if: :all_blank
 
+  validates :state, presence: true
+
+  state_machine :state, initial: :address do
+    state :address
+    state :confirm
+  end
+
   scope :incomplete, -> {
     where(completed_at: nil)
   }
