@@ -21,7 +21,7 @@ class Cart < ApplicationRecord
   accepts_nested_attributes_for :cart_items, allow_destroy: true, reject_if: :all_blank
 
   validates :state, presence: true
-  validates :postal_code, format: { with: /\A\d{7}\z/ }
+  validates :postal_code, format: { with: /\A\d{7}\z/, allow_blank: true }
 
   state_machine :state, initial: :address do
     state :address
