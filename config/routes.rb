@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   put '/update_cart' => 'carts#update'
 
   get '/checkout' => 'checkout#edit'
+  post '/update_checkout' => 'checkout#update'
 end

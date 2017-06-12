@@ -1,15 +1,33 @@
 class CheckoutController < ApplicationController
-  before_action :setup_for_current_state, only: [:edit, :update]
+  def edit
+    @cart = current_cart
+  end
+
+  def update
+    # 戻るときはもっとスマートにやった方がいいのでは
+    @cart = current_cart
+
+    if @cart.update(cart_params)
+    else
+      flash.now[:danger] = '問題があります'
+      @cart.back
+    end
+
+    if params.key?(:confirm)
+      @cart.to_confirm
+    elsif params.key?(:back)
+      @cart.back
+    end
+
+    unless @cart.update(cart_params)
+    end
+
+    render :edit
+  end
 
   private
 
-  def setup_for_current_state
-    @cart = current_cart
-    method_name = :"before_#{@cart.state}"
-    send(method_name) if respond_to?(method_name, true)
-  end
-
-  def before_address
-    @cart = current_cart
+  def cart_params
+    params.require(:cart).permit(Cart::PERMITTED_ATTRIBUTES)
   end
 end

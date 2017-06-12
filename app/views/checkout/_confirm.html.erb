@@ -1,0 +1,20 @@
+<div class="col-sm-6">
+  <div class="form-group">
+    <%= f.label :postal_code, class: 'control-label col-sm-4' %>
+    <div class="col-sm-8">
+      <%= content_tag :p, @cart.postal_code, class: 'form-control-static' %>
+      <%= f.hidden_field :postal_code %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :address, class: 'control-label col-sm-4' %>
+    <div class="col-sm-8">
+      <%= content_tag :p, @cart.address, class: 'form-control-static' %>
+      <%= f.hidden_field :address %>
+    </div>
+  </div>
+  <div class="col-sm-12 text-center">
+    <%= f.submit '入力画面へ', name: 'back', class: 'btn btn-default back' %>
+    <%= f.submit '確認画面へ', class: 'btn btn-success' %>
+  </div>
+</div>

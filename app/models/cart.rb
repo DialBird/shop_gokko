@@ -13,16 +13,27 @@
 #
 
 class Cart < ApplicationRecord
+  PERMITTED_ATTRIBUTES = %i(state postal_code address).freeze
+
   belongs_to :user
   has_many :cart_items, dependent: :destroy
 
   accepts_nested_attributes_for :cart_items, allow_destroy: true, reject_if: :all_blank
 
   validates :state, presence: true
+  validates :postal_code, format: { with: /\A\d{7}\z/ }
 
   state_machine :state, initial: :address do
     state :address
     state :confirm
+
+    event :to_confirm do
+      transition :address => :confirm
+    end
+
+    event :back do
+      transition :confirm => :address
+    end
   end
 
   scope :incomplete, -> {

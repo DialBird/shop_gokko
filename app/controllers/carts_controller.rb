@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+  skip_before_action :back_to_address
+
   def edit
     @cart = current_cart || Cart.incomplete.find_or_initialize_by(user_id: current_user.id)
   end

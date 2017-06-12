@@ -1,1 +1,5 @@
-<% content_for(:title) do%>住所入力<% end %>
+<% content_for(:title) do%>決済画面<% end %>
+
+<%= form_for @cart, url: update_checkout_path, method: :post, html: { id: 'update_checkout', class: 'form-horizontal' } do |f| %>
+  <%= render @cart.state, f: f %>
+<% end %>
