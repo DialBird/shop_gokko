@@ -9,14 +9,12 @@ class CheckoutController < ApplicationController
     # 戻るときはもっとスマートにやった方がいいのでは
     @cart = current_cart
 
-    if @cart.update(cart_params)
-    else
-      flash.now[:danger] = '問題があります'
-      @cart.back
-    end
-
     if params.key?(:confirm)
-      @cart.to_confirm
+      if postal_code_and_address_included? and @cart.update(cart_params)
+        @cart.to_confirm
+      else
+        flash.now[:danger] = '問題があります'
+      end
     elsif params.key?(:back)
       @cart.back
     elsif params.key?(:complete)
@@ -30,5 +28,10 @@ class CheckoutController < ApplicationController
 
   def cart_params
     params.require(:cart).permit(Cart::PERMITTED_ATTRIBUTES)
+  end
+
+  def postal_code_and_address_included?
+    return true if cart_params[:postal_code].present? and cart_params[:address].present?
+    false
   end
 end
