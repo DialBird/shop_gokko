@@ -20,6 +20,6 @@ class ApplicationController < ActionController::Base
   end
 
   def back_to_address
-    current_cart.try!(:back) if current_cart.can_back?
+    current_cart.try!(:back) if current_cart.try!(:can_back?)
   end
 end
