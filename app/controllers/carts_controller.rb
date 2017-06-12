@@ -1,6 +1,4 @@
 class CartsController < ApplicationController
-  skip_before_action :back_to_address
-
   def edit
     @cart = current_cart || Cart.incomplete.find_or_initialize_by(user_id: current_user.id)
   end
@@ -21,7 +19,7 @@ class CartsController < ApplicationController
   ensure
     if @cart.errors.any?
       flash[:error] = @cart.errors.full_messages.join(',')
-      redirect_back(fall_back_location: root_path)
+      redirect_back(fallback_location: root_path)
     else
       redirect_to cart_path
     end

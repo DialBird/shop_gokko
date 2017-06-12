@@ -34,6 +34,12 @@ class Cart < ApplicationRecord
     event :back do
       transition :confirm => :address
     end
+
+    event :finish do
+      transition :confirm => :complete
+    end
+
+    after_transition to: :complete, do: :set_completed_at
   end
 
   scope :incomplete, -> {
@@ -46,5 +52,9 @@ class Cart < ApplicationRecord
 
   def contents
     @contents ||= CartContents.new(self)
+  end
+
+  def set_completed_at
+    update(completed_at: DateTime.current)
   end
 end

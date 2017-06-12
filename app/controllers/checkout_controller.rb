@@ -1,4 +1,6 @@
 class CheckoutController < ApplicationController
+  skip_before_action :back_to_address
+
   def edit
     @cart = current_cart
   end
@@ -17,9 +19,8 @@ class CheckoutController < ApplicationController
       @cart.to_confirm
     elsif params.key?(:back)
       @cart.back
-    end
-
-    unless @cart.update(cart_params)
+    elsif params.key?(:complete)
+      @cart.finish
     end
 
     render :edit
