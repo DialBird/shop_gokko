@@ -58,9 +58,9 @@ class Cart < ApplicationRecord
     update(completed_at: DateTime.current)
   end
 
-  def total
+  def amount
     cart_items.map do |item|
-      item.display_total
+      item.sub_total
     end.sum
   end
 end
