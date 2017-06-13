@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
   def edit
     @cart = current_cart || Cart.incomplete.find_or_initialize_by(user_id: current_user.id)
+    @cart = @cart.decorate
   end
 
   def populate
