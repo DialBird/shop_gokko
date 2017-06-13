@@ -22,6 +22,8 @@ gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'state_machines-activerecord'
+gem 'draper'
+gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
