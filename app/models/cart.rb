@@ -57,4 +57,10 @@ class Cart < ApplicationRecord
   def set_completed_at
     update(completed_at: DateTime.current)
   end
+
+  def total
+    cart_items.map do |item|
+      item.display_total
+    end.sum
+  end
 end

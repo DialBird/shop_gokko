@@ -16,6 +16,11 @@
         <%= render partial: 'carts/cart_item', collection: @cart.cart_items, locals: { cart_f: cart_f } %>
       </tbody>
     </table>
+    <div class="col-sm-12 text-right">
+      <p class="lead">小計 : <strong><%= @cart.total %></strong> 円</p>
+    </div>
+
+    <hr>
 
     <div class="col-sm-12">
       <%= link_to '買い物を続ける', products_path, class: 'btn btn-default' %>
