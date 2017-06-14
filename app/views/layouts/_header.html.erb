@@ -18,7 +18,8 @@
               アカウント <span class="caret"></span>
             <% end %>
             <ul class="dropdown-menu">
-              <li><%= link_to current_cart_status, cart_path %></li>
+              <li id="link-to-cart"></li>
+              <script>$(function(){ShopGokko.fetch_cart('<%= cart_link_path %>');})</script>
               <li>
                 <%= link_to 'ログアウト', destroy_user_session_path,
                                           method: :delete,

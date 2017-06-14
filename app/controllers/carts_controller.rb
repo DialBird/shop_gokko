@@ -36,6 +36,10 @@ class CartsController < ApplicationController
     end
   end
 
+  def cart_link
+    render partial: 'shared/link_to_cart'
+  end
+
   private
 
   def cart_params

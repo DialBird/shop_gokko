@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/cart' => 'carts#edit'
   put '/populate_cart' => 'carts#populate'
   put '/update_cart' => 'carts#update'
+  get '/cart_link' => 'carts#cart_link'
 
   get '/checkout' => 'checkout#edit'
   post '/update_checkout' => 'checkout#update'
