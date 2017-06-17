@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Auth
+
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   before_action :back_to_address
