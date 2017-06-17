@@ -16,7 +16,7 @@
 class Cart < ApplicationRecord
   PERMITTED_ATTRIBUTES = %i(state postal_code address).freeze
 
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :cart_items, dependent: :destroy
 
   accepts_nested_attributes_for :cart_items, allow_destroy: true, reject_if: :all_blank
