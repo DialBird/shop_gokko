@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170610073049) do
     t.string "state", comment: "ステータスID"
     t.string "postal_code", default: "", comment: "郵便番号"
     t.string "address", default: "", comment: "住所"
+    t.string "guest_token", comment: "ゲストトークン"
     t.datetime "completed_at", comment: "取引完了日"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

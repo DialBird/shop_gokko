@@ -7,6 +7,7 @@
 #  state        :string                                 # ステータスID
 #  postal_code  :string           default("")           # 郵便番号
 #  address      :string           default("")           # 住所
+#  guest_token  :string                                 # ゲストトークン
 #  completed_at :datetime                               # 取引完了日
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
