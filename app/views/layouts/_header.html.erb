@@ -11,22 +11,24 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <li class="dropdown">
-            <%= link_to '#', class: 'dropdown-toggle', data: { toggle: "dropdown" } do %>
-              アカウント <span class="caret"></span>
+        <li class="dropdown">
+          <%= link_to '#', class: 'dropdown-toggle', data: { toggle: "dropdown" } do %>
+            アカウント <span class="caret"></span>
+          <% end %>
+          <ul class="dropdown-menu">
+            <li id="link-to-cart"></li>
+            <script>$(function(){ShopGokko.fetch_cart('<%= cart_link_path %>');})</script>
+            <li>
+            <% if user_signed_in? %>
+              <%= link_to 'ログアウト', destroy_user_session_path,
+                                        method: :delete,
+                                        data: { confirm: 'ログアウトしてもよろしいでしょうか？' } %>
+            <% else %>
+              <%= link_to 'ログイン', new_user_session_path %>
             <% end %>
-            <ul class="dropdown-menu">
-              <li id="link-to-cart"></li>
-              <script>$(function(){ShopGokko.fetch_cart('<%= cart_link_path %>');})</script>
-              <li>
-                <%= link_to 'ログアウト', destroy_user_session_path,
-                                          method: :delete,
-                                          data: { confirm: 'ログアウトしてもよろしいでしょうか？' } %>
-              </li>
-            </ul>
-          </li>
-        <% end %>
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>

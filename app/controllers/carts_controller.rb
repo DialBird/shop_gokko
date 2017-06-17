@@ -1,7 +1,8 @@
 class CartsController < ApplicationController
   skip_before_action :back_to_address, only: [:cart_link]
   def edit
-    @cart = current_cart || Cart.incomplete.find_or_initialize_by(user_id: current_user.id)
+    @cart = current_cart || Cart.incomplete.find_or_initialize_by(guest_token: cookies.signed[:guest_token],
+                                                                  user_id: current_user.try!(:id))
     @cart = @cart.decorate
   end
 

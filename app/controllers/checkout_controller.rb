@@ -1,4 +1,6 @@
 class CheckoutController < ApplicationController
+  before_action :authenticate_user!
+  before_action :setup_current_cart
   skip_before_action :back_to_address
 
   def edit
@@ -33,5 +35,11 @@ class CheckoutController < ApplicationController
   def postal_code_and_address_included?
     return true if cart_params[:postal_code].present? and cart_params[:address].present?
     false
+  end
+
+  def setup_current_cart
+    Cart.incomplete
+        .find_by(guest_token: cookies.signed[:guest_token])
+        .update(user_id: current_user.id)
   end
 end
